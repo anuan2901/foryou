@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #fce4ec, #e0f7fa); /* Warna pastel lembut */
+    color: #333;
+    overflow: hidden; /* Mencegah scroll yang tidak diinginkan karena halaman tumpang tindih */
+}
+
+/* Container untuk semua halaman */
+#app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gaya dasar untuk setiap "halaman" */
+.page {
+    position: absolute; /* Tempatkan semua halaman di posisi yang sama */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Gunakan flexbox untuk memusatkan konten di dalam halaman */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Sembunyikan secara default */
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.page.active {
+    opacity: 1; /* Tampilkan halaman aktif */
+    visibility: visible;
+    position: relative; /* Atur halaman aktif ke posisi relatif untuk menempati ruang */
+}
+
+/* Konten di dalam setiap halaman */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 700px;
+    width: 90%;
+    box-sizing: border-box;
+    /* Removed position: relative; here as it's handled by .page */
+}
+
+h1 {
+    font-family: 'poppnis', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3em;
+    color: #e91e63; /* Warna pink yang menawan */
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: 'poppnis', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.2em;
+    color: #4a148c; /* Warna ungu gelap */
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.letter-content {
+    background-color: #fffaf0; /* Warna kertas surat */
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ffe0b2;
+    margin-bottom: 30px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-content p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    color: #7b1fa2;
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #880e4f;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button:hover {
+    background-color: #c2185b;
+    transform: translateY(-3px);
+}
+
+.content-box {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.interactive-heart {
+    font-size: 3em;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.interactive-heart:hover {
+    transform: scale(1.1);
+}
+
+.heart-message {
+    color: #e91e63;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.button-group {
+    margin-top: 30px;
+}
+
+.yes-button {
+    background-color: #4caf50;
+}
+.yes-button:hover {
+    background-color: #66bb6a;
+}
+
+.no-button {
+    background-color: #f44336;
+}
+.no-button:hover {
+    background-color: #e57373;
+}
+
+/* Gaya untuk tombol 'Tidak' yang dinonaktifkan */
+.no-button[address] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none; /* Mencegah event klik */
+}
+
+
+.response-message {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #673ab7;
+    margin-top: 25px;
+    min-height: 50px;
+}
+
+.final-image {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi Fade In */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.delayed-fade {
+    animation-delay: 1.5s;
+}
+
+.delayed-fade-more {
+    animation-delay: 2.5s;
+}
+
+
+/* Confetti (opsional) */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #ffeb3b; /* Kuning */
+    border-radius: 50%;
+    opacity: 0;
+    animation: confettiFall 3s forwards ease-out;
+    z-index: 9999;
+}
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Media Queries untuk Responsif */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .letter-content p {
+        font-size: 1.2em;
+    }
+    .button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .letter-content p {
+        font-size: 1em;
+    }
+    .button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .button-group button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
